@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>שאלון סגנונות ניהול</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--inner:#f7f8fa;--tx:#1b2433;--mut:#64708a;--bd:#d9dfeb;--ac:#2f5bd8;--acs:#e6edff;--er:#fdecea;--erx:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141c;--card:#1a212d;--inner:#141a24;--tx:#e8ecf4;--mut:#93a0b8;--bd:#2d3748;--ac:#7b9cff;--acs:#243257;--er:#3a1f1f;--erx:#ff9b93}}
+:root[data-theme="dark"]{--bg:#10141c;--card:#1a212d;--inner:#141a24;--tx:#e8ecf4;--mut:#93a0b8;--bd:#2d3748;--ac:#7b9cff;--acs:#243257;--er:#3a1f1f;--erx:#ff9b93}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Heebo",Arial,sans-serif;line-height:1.6}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--card);border-bottom:1px solid var(--bd)}
+.title{font-weight:700}.mut{color:var(--mut)}
+.wrap{max-width:700px;margin:0 auto;padding:20px 16px 30px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:24px}
+.inner{background:var(--inner);border-radius:12px;padding:16px;margin:18px 0}
+h1{font-size:1.6rem;margin:.1em 0 .5em}h2{font-size:1.2rem;margin:0 0 .6em}p{margin:.5em 0}
+label{display:block;font-weight:700;margin-bottom:8px}
+input{width:100%;padding:12px;font:inherit;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx)}
+button{font:inherit;cursor:pointer;border-radius:10px;padding:11px 18px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+button.pri{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+button.block{width:100%}button:disabled{opacity:.45;cursor:not-allowed}
+.hide{display:none!important}
+.err{background:var(--er);color:var(--erx);padding:10px 12px;border-radius:10px;margin-top:10px;font-size:.9rem}
+.prog{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mut);margin-bottom:6px}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin-bottom:14px}.bar i{display:block;height:100%;background:var(--ac);transition:width .25s}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.chip{width:34px;height:34px;padding:0;border-radius:8px;font-size:.85rem}
+.chip.done{background:var(--acs);border-color:var(--ac)}.chip.now{background:var(--ac);color:#fff;border-color:var(--ac)}
+.stem{font-size:1.25rem;font-weight:700;margin-bottom:6px}
+.hintq{font-size:.85rem;color:var(--mut);margin-bottom:8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;margin:10px 0;padding:14px;border:2px solid var(--bd);border-radius:12px}
+.opt.on{border-color:var(--ac);background:var(--acs)}
+.badge{flex:none;width:32px;height:32px;border-radius:50%;border:2px dashed var(--bd);display:grid;place-items:center;font-weight:700}
+.opt.on .badge{background:var(--ac);border:2px solid var(--ac);color:#fff}
+.row{display:flex;gap:10px;justify-content:space-between;margin-top:20px;flex-wrap:wrap}
+.spin{width:40px;height:40px;margin:10px auto;border:4px solid var(--bd);border-top-color:var(--ac);border-radius:50%;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+.hero{text-align:center;margin-bottom:16px}.hn{font-size:1.5rem;font-weight:800}
+.tie{background:var(--acs);padding:12px;border-radius:10px;margin-bottom:14px;font-size:.9rem}
+.brow{display:grid;grid-template-columns:130px 1fr 80px;gap:10px;align-items:center;margin:10px 0}
+.bl{font-size:.9rem;line-height:1.3}.bl span{display:block;font-size:.75rem}
+.bt{height:16px;background:var(--bd);border-radius:8px;overflow:hidden}.bt i{display:block;height:100%;border-radius:8px}
+.bv{font-weight:700;text-align:center;line-height:1.2}.bv small{display:block;font-weight:400;font-size:.7rem;color:var(--mut)}
+.spot{border:2px solid;border-radius:14px;padding:16px;margin-top:16px;position:relative}
+.spot.secondary{opacity:.92}
+.tag{display:inline-block;color:#fff;padding:2px 12px;border-radius:20px;font-size:.8rem;font-weight:600}
+.spot h3{margin:8px 0 0;font-size:1.25rem}.eng{color:var(--mut);font-size:.85rem;margin-bottom:6px}
+.spot ul{margin:6px 0 0;padding-right:20px}.spot li{margin:4px 0}
+.foot{text-align:center;color:var(--mut);font-size:.8rem;padding:10px 0 24px}
+table{width:100%;border-collapse:collapse;font-size:.85rem}td,th{padding:6px;border-bottom:1px solid var(--bd);text-align:right}.tw{overflow-x:auto}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:10px}
+select{padding:12px;font:inherit;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx)}
+a{color:var(--ac)}#atbl button{padding:4px 10px;font-size:.8rem;color:#b3261e}
+.cs{margin-top:22px}.cs h2{margin-bottom:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{border-radius:12px;padding:14px;border:1px solid var(--bd)}
+.box.good{background:rgba(46,125,50,.1);border-color:rgba(46,125,50,.4)}
+.box.bad{background:rgba(192,57,43,.1);border-color:rgba(192,57,43,.4)}
+.box h4{margin:0 0 8px;font-size:1rem}.box ul{margin:0;padding-right:18px}.box li{margin:6px 0}
+.bridge{background:var(--acs);border-radius:12px;padding:14px}
+.bridge ul{margin:6px 0 0;padding-right:18px}.bridge li{margin:6px 0}
+.final{margin-top:22px;border:2px solid var(--ac);border-radius:14px;padding:16px}
+.final h2{margin-top:0}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.fc{border-radius:10px;padding:10px;border:2px solid var(--bd);font-size:.9rem}
+.fc b{display:block}
+@media(max-width:480px){.two{grid-template-columns:1fr}}
+@media(max-width:480px){.brow{grid-template-columns:90px 1fr 64px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="title">שאלון סגנונות ניהול</div><div id="stepInd" class="mut"></div></header>
+<div class="wrap">
+
+<section id="s-intro" class="card">
+  <h1>שאלון אבחון סגנון ניהול</h1>
+  <p>שאלון זה מיועד למשתתפי קורס מפקדים בכניסתם לקבע, ומטרתו לסייע לכם להכיר את סגנון הניהול הבולט שלכם. השאלון כולל 20 שאלות, ובכל שאלה 4 היגדים אפשריים.</p>
+  <p>עבור כל שאלה, דרגו את ההיגדים <b>מהמתאים ביותר לכם ועד הפחות מתאים</b> — פשוט לחצו עליהם לפי סדר ההתאמה. אין תשובות נכונות או שגויות, ענו בכנות ובאופן ספונטני.</p>
+  <div class="inner">
+    <label for="name">שם מלא</label>
+    <input id="name" autocomplete="name" placeholder="הקלד/י שם מלא">
+    <div id="nameErr" class="err hide">יש להזין שם מלא כדי להתחיל</div>
+  </div>
+  <button class="pri block" id="start">התחל את השאלון</button>
+</section>
+
+<section id="s-q" class="card hide">
+  <div class="prog"><span id="pTxt"></span><span id="pPct"></span></div>
+  <div class="bar"><i id="pFill"></i></div>
+  <div class="qnav" id="qnav"></div>
+  <div class="stem" id="stem"></div>
+  <div class="hintq">לחצו על ההיגדים בסדר יורד: תחילה על ההיגד המתאים ביותר, ולבסוף על הפחות מתאים.</div>
+  <div id="opts"></div>
+  <div class="row"><button id="prev">חזרה</button><button id="resetQ">איפוס שאלה</button><button class="pri" id="next" disabled>הבא</button></div>
+</section>
+
+<section id="s-rev" class="card hide">
+  <h2>סיכום לפני שליחה</h2>
+  <p id="revSum"></p>
+  <div class="qnav" id="qnavRev"></div>
+  <div id="revErr" class="err hide">יש להשלים את כל 20 השאלות לפני השליחה.</div>
+  <div class="row"><button id="backQ">חזרה לשאלות</button><button class="pri" id="submit">שליחת השאלון</button></div>
+</section>
+
+<section id="s-send" class="card hide" style="text-align:center"><div class="spin"></div><p>שולח את תוצאותיך...</p></section>
+
+<section id="s-res" class="card hide">
+  <div class="hero"><div class="hn" id="resName"></div><div class="mut">תוצאות שאלון סגנון הניהול שלך</div></div>
+  <div id="tie" class="tie hide"></div>
+  <div id="bars"></div>
+  <div class="spot" id="spot1"></div>
+  <div class="spot" id="spot2"></div>
+  <div id="concl"></div>
+  <p id="saved" class="mut" style="text-align:center;font-size:.85rem"></p>
+</section>
+
+</div>
+<footer class="foot">שאלון סגנונות ניהול · מבוסס על מודל PAEI</footer>
+
+<script>
+
+const TYPES={
+P:{name:'היצרן',eng:'Producer',full:'הזאב הבודד היצרן',color:'#c0392b',ranges:[['לא מאפיין',20,61],['משני (נלווה)',62,75],['ראשי (מאפיין)',76,86],['בולט מאד',87,160]],desc:['חרוץ, שקדן, ידען, מקצוען, פותר משברים, מכבה שריפות','מכור לעבודה, מקבל ביטחון כשהוא עמוס ושקוע בעבודה, שעות עבודה מרובות','ריכוזי, סגניו נערי שליחויות, שולחן עבודה עמוס ומבולגן','פתרון בעיות מיידי. סולד מחשיבה לטווח רחוק לא רלוונטית ופנטזיונרית','רץ ראשון לקו האש. משמש דוגמא אישית']},
+A:{name:'המינהלן',eng:'Administrator',full:'המינהלן הביורוקרט',color:'#2a6f97',ranges:[['לא מאפיין',20,83],['משני (נלווה)',84,97],['ראשי (מאפיין)',98,105],['בולט מאד',106,160]],desc:['מטפל בפרטים הקטנים, פועל לפי הספר, שינון, תיוק, תיעוד, SLA, SOP','מתעקש על ציות עיוור לכל פסיק שמוגדר ב-SLA','סגניו YES MEN','שולחן עבודה נקי, סדר מופתי','עובד במדוייק בהתאם לשעות העבודה – מגיע בזמן והולך בזמן']},
+E:{name:'היזם',eng:'Entrepreneur',full:'היזם מבעיר הדליקות',color:'#e08e0b',ranges:[['לא מאפיין',20,66],['משני (נלווה)',67,80],['ראשי (מאפיין)',81,90],['בולט מאד',91,160]],desc:['יצירתי, נוטל סיכונים, חדשן, לא יורד לפרטים','נלהב, מבעיר דליקות בעיקר בימי ראשון, מתחיל כל פעם משימות חדשות מבלי לסיים ישנות','סגניו מתרוצצים לכבות שריפות שהוא הדליק, לא פונים אליו בפתרון בעיות','נוטה לנרקסיזם, מתחרה מול יזמים']},
+I:{name:'המתכלל',eng:'Integrator',full:'המתכלל התומך',color:'#2e7d32',ranges:[['לא מאפיין',20,47],['משני (נלווה)',48,62],['ראשי (מאפיין)',63,73],['בולט מאד',74,160]],desc:['אוהב בני אדם, רגיש לזולת, דדוקטיבי','פותר סכסוכים, מלכד, מפיג מתחים, גיבושים','ראייה מערכתית גמישה ומשולבת, יודע לחיות בתוך מרחב של נרטיבים ופרשנויות','סגניו מזינים אותו בחדשות המשרדיות','ראייה מערכתית אינטגרטיבית']}};
+const KEYS=['P','A','E','I'];
+const Q=[
+['מטרתי העיקרית היא','להיות במשרה עם עמדה (בעלת סטאטוס)','להיות הטוב ביותר בשטח שלי','להשיג הכרה לעבודתי','להרגיש ביטחון במקום עבודתי'],
+['אני נהנה מעבודות','טכניות באופיין ומוגדרות היטב','יציבות ועקביות','שמאפשרות פעילות עצמאית','שמקשרות ומערבות בין אנשים'],
+['אני מצפה מאנשים שעובדים עבורי להיות','יעילים ומהירים','נאמנים ואחראים','בעלי יכולת גבוהה','פתוחים לרעיונות והצעות'],
+['בעבודתי אני משתדל להשיג','תוצאות מעשיות','את הפתרונות הטובים ביותר','גישות חדשות או רעיונות חדשים','אווירה טובה'],
+['אני מתקשר הכי טוב','בקשר ישיר אחד על אחד','בכתיבה','בדיון קבוצתי פתוח','בפגישה רשמית (מתואמת)'],
+['בתכנון שלי אני מדגיש','בעיות שוטפות (בהווה)','השגת מטרות','מטרות עתידיות','פיתוח קריירה של אנשים'],
+['בהתמודדות עם בעיה אני','מסתמך על גישות שהוכיחו את עצמן','מנתח בזהירות','מחפש גישות יצירתיות','מסתמך על הרגשה'],
+['בעת שימוש במידע אני מעדיף','עובדות מוגדרות ספציפיות למקרה','מידע מדוייק ושלם','כיסוי כללי של אפשרויות רבות','נתונים רלוונטיים שמובנים בקלות'],
+['כאשר איני בטוח מה לעשות אני','מחפש עובדות','משתהה לפני שמקבל החלטה','מסתמך על אינטואיציה','מחפש פתרון של פשרה'],
+['אני משתדל להימנע מ','ויכוחים ארוכים','לא לגמור עבודה','שימוש במספרים ונוסחאות','קונפליקט עם אחרים'],
+['אני טוב במיוחד ב','זכרון של תאריכים ועובדות','פתירת בעיות קשות','ראיית אפשרויות רבות','יצירה וקיום קשרים עם אחרים'],
+['כאשר נוצר לחץ של זמן אני','מחליט ופועל במהירות','פועל לפי התוכנית וסדר העדיפויות בה','מסרב להילחץ','מחפש הנחייה ותמיכה'],
+['במצבים חברתיים אני בדרך כלל','מדבר עם אחרים','חושב על מה שנאמר','מתבונן במתרחש סביב','מקשיב לשיחה'],
+['אני זוכר היטב','שמות של אנשים','מקומות בהם נפגשנו','פרצופים של אנשים','תכונות ואופי של אנשים'],
+['העבודה שאני עושה נותנת בידי','כוח להשפיע על אחרים','משימות בעלות אתגר','אפשרות להשיג את מטרותיי האישיות','להיות מקובל ע"י הקבוצה'],
+['אני מסתדר טוב עם אלו שהם','בעלי מרץ ותחרותיים','בעלי ביטחון עצמי','בעלי ראש פתוח','מנומסים ונותני אמון'],
+['כאשר אני לחוץ','אני הופך מתוח','אני מתרכז בבעיה','אני הופך מתוסכל','אני נעשה שכחן'],
+['אחרים חושבים שאני','תוקפני','בעל משמעת עצמית','בעל דמיון','תומך ועוזר'],
+['ההחלטות שלי בדרך כלל','מציאותיות וישירות','שיטתיות ומופשטות','כוללניות וגמישות','רגישות לצרכי אחרים'],
+['אינני אוהב','איבוד שליטה','שינויים תכופים וחוסר יציבות','לציית ולעקוב אחרי חוקים','להיות דחוי']];
+const RANK_ORDER=[8,4,2,1];
+
+const $=id=>document.getElementById(id);
+const SCR=['s-intro','s-q','s-rev','s-send','s-res'];
+const show=id=>{SCR.forEach(x=>$(x).classList.toggle('hide',x!==id));window.scrollTo(0,0);if(id!=='s-q')$('stepInd').textContent=''};
+// answers[q] = { P: rank, A: rank, E: rank, I: rank } — rank is points (8/4/2/1)
+const answers=Q.map(()=>({}));
+let cur=0,fullName='';
+const done=i=>KEYS.every(k=>answers[i][k]!==undefined);
+const allDone=()=>answers.every((_,i)=>done(i));
+const nextRank=i=>{const used=KEYS.filter(k=>answers[i][k]!==undefined).map(k=>answers[i][k]);return RANK_ORDER.find(r=>used.indexOf(r)<0)};
+
+$('start').onclick=()=>{
+  const v=$('name').value.trim();
+  if(v.length<2){$('nameErr').classList.remove('hide');$('name').focus();return}
+  $('nameErr').classList.add('hide');fullName=v;cur=0;renderQ();show('s-q');
+};
+function navChips(el,mode){
+  el.innerHTML='';
+  Q.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.textContent=i+1;
+    b.className='chip'+(done(i)?' done':'')+(i===cur&&mode==='q'?' now':'');
+    b.onclick=()=>{cur=i;renderQ();show('s-q')};el.appendChild(b)});
+}
+function renderQ(){
+  const a=answers[cur];
+  $('pTxt').textContent='שאלה '+(cur+1)+' מתוך '+Q.length;
+  const pct=Math.round((cur+1)/Q.length*100);
+  $('pPct').textContent=pct+'%';$('pFill').style.width=pct+'%';
+  $('stepInd').textContent='שאלה '+(cur+1)+'/20';
+  navChips($('qnav'),'q');
+  $('stem').textContent=Q[cur][0];
+  const box=$('opts');box.innerHTML='';
+  KEYS.forEach((k,ki)=>{
+    const rank=a[k];
+    const b=document.createElement('button');b.className='opt'+(rank!==undefined?' on':'');
+    b.innerHTML='<span class="badge">'+(rank!==undefined?rank:'')+'</span><span></span>';
+    b.lastChild.textContent=Q[cur][ki+1];
+    b.onclick=()=>{
+      if(a[k]!==undefined)delete a[k];
+      else{const r=nextRank(cur);if(r===undefined)return;a[k]=r}
+      renderQ();
+    };
+    box.appendChild(b);
+  });
+  $('prev').disabled=cur===0;
+  $('next').textContent=cur===Q.length-1?'לסיום':'הבא';
+  $('next').disabled=!done(cur);
+}
+$('resetQ').onclick=()=>{answers[cur]={};renderQ()};
+$('prev').onclick=()=>{if(cur>0){cur--;renderQ()}};
+$('next').onclick=()=>{
+  if(!done(cur))return;
+  if(cur<Q.length-1){cur++;renderQ()}else{renderRev();show('s-rev')}
+};
+function renderRev(){
+  const n=answers.filter((_,i)=>done(i)).length;
+  $('revSum').textContent='הושלמו '+n+' מתוך '+Q.length+' שאלות. ניתן ללחוץ על מספר שאלה כדי לחזור ולערוך אותה.';
+  navChips($('qnavRev'),'r');
+  $('revErr').classList.toggle('hide',allDone());
+  $('submit').disabled=!allDone();
+}
+$('backQ').onclick=()=>{
+  let t=answers.findIndex((_,i)=>!done(i));if(t===-1)t=cur;
+  cur=t;renderQ();show('s-q');
+};
+$('submit').onclick=()=>{if(!allDone()){renderRev();return}submitQ()};
+
+function totalsOf(){const t={P:0,A:0,E:0,I:0};answers.forEach(a=>KEYS.forEach(k=>{t[k]+=a[k]}));return t}
+function rankingOf(t){return KEYS.slice().sort((a,b)=>t[b]-t[a])}
+function level(k,sc){const r=TYPES[k].ranges.find(x=>sc>=x[1]&&sc<=x[2]);return r?r[0]:TYPES[k].ranges[TYPES[k].ranges.length-1][0]}
+
+async function submitQ(){
+  const totals=totalsOf(),ranking=rankingOf(totals);
+  const dominant=ranking[0],secondary=ranking[1];
+  const payload={fullName,submittedAt:new Date().toISOString(),
+    answers:Q.map((_,i)=>({num:i+1,ranks:answers[i]})),totals,dominant,secondary};
+  show('s-send');
+  let saved=false;
+  try{
+    const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    saved=r.ok;
+  }catch(e){console.error('שגיאה בשמירת התוצאות:',e)}
+  renderRes(totals,dominant,secondary,saved);show('s-res');
+}
+function renderRes(t,dom,sec,saved){
+  $('resName').textContent=fullName;
+  const tie=$('tie'),mx=Math.max(...KEYS.map(k=>t[k])),tops=KEYS.filter(k=>t[k]===mx);
+  if(tops.length>1){
+    tie.textContent='לתשומת לבך: נמצא שוויון בציון הגבוה ביותר בין הסגנונות הבאים: '+tops.map(k=>TYPES[k].name).join(', ')+'. הסגנונות בולטים באותה מידה.';
+    tie.classList.remove('hide');
+  }else tie.classList.add('hide');
+  $('bars').innerHTML='';
+  rankingOf(t).forEach(k=>{
+    const T=TYPES[k],sc=t[k],pct=Math.round((sc-20)/(160-20)*100);
+    const d=document.createElement('div');d.className='brow';
+    d.innerHTML='<div class="bl"><b style="color:'+T.color+'">'+T.name+'</b><span class="mut">'+level(k,sc)+'</span></div><div class="bt"><i style="width:'+pct+'%;background:'+T.color+'"></i></div><div class="bv">'+sc+'</div>';
+    $('bars').appendChild(d);
+  });
+  spot($('spot1'),dom,'הסגנון הבולט שלך','primary');
+  spot($('spot2'),sec,'הסגנון המשני שלך','secondary');
+  renderConcl(t,dom);
+  $('saved').textContent=saved?'התוצאות נשמרו במערכת ותועברו לצוות הקורס.':'לא ניתן היה לשמור את התוצאות במערכת. מומלץ לצלם מסך ולהעביר לצוות הקורס.';
+}
+const CONCL={
+P:{s:['ממוקד תוצאות ופועל ביעילות ובמהירות – משימות מושלמות בזמן.','מוביל בדוגמה אישית ורץ ראשון לקו האש, ולכן מקבל אמון ממפקדיו ומפקודיו.'],
+   w:['נוטה לעשות הכול בעצמו ולא להאציל – הכפופים הופכים לנערי שליחויות.','מתמקד בכיבוי שריפות ובהווה, על חשבון חשיבה לטווח רחוק, ועלול להישחק מעומס.'],
+   b:['הציבו יעד שבועי אחד להאצלה: משימה שמישהו אחר מבצע מתחילתה ועד סופה.','הקדישו זמן קבוע לתכנון קדימה לפני שקופצים לביצוע.']},
+A:{s:['שיטתי ומדויק – שולט בפרטים, בתיעוד ובנהלים ולכן אפשר לסמוך עליו.','מייצר יציבות ועקביות ביחידה ועובד בצורה מסודרת וצפויה.'],
+   w:['נוטה לנוקשות ולציות עיוור לנהלים גם כשהמציאות מצריכה גמישות.','מעודד הכפופים לומר "כן" ולא לחשוב לבד, ופחות פתוח לשינוי ולחדשנות.'],
+   b:['בכל נוהל שואלים פעם בחודש: האם הוא עדיין משרת את המטרה?','ביקשו מהכפופים להציע שיפורים, והתנסו ברעיון אחד חדש בלי להמתין לאישור מלא.']},
+E:{s:['יצירתי וחדשני – מזהה הזדמנויות ורואה את התמונה הגדולה.','נועז ונכון לקחת סיכונים, ומחולל שינוי ותנופה בקרב הצוות.'],
+   w:['מתחיל משימות חדשות לפני שסיים את הישנות ולא יורד לפרטים.','סגניו מתרוצצים לכבות שריפות שהוא הדליק, ולכן אינם פונים אליו עם בעיות.'],
+   b:['לפני כל יוזמה חדשה סיימו משימה פתוחה אחת וסגרו אותה בצורה מסודרת.','שתפו מינהלן בצוות בפרטים ובתכנון, והקשיבו לכפופים לפני שמשיקים רעיון.']},
+I:{s:['רגיש לזולת, קשוב לאנשים ובונה אמון בצוות.','מלכד, פותר סכסוכים ומפיג מתחים, ורואה את המערכת כמכלול גמיש.'],
+   w:['נוטה להימנע מעימותים ומהכרעות קשות כדי לשמור על האווירה.','עלול להתמקד בקשרים על חשבון יעדים ותוצאות, ולרצות את כולם.'],
+   b:['תרגלו הכרעה: קבעו מראש מועד לקבלת החלטה, גם אם אין הסכמה מלאה.','הציבו לצוות יעד מדיד אחד ובדקו אותו בקביעות, לצד הדאגה לאנשים.']}};
+const DEV={
+P:['הציבו יעדים מדידים לכל משימה וקבעו מועד סיום.','התמקדו בביצוע: סיימו כל משימה לפני שעוברים לבאה.'],
+A:['בנו תכנון ותיעוד קצרים לפני ביצוע: מי, מה ועד מתי.','קבעו שגרות בקרה קבועות, כמו סיכום שבועי של משימות פתוחות.'],
+E:['שאלו "איך אפשר לעשות את זה אחרת?" לפחות פעם בשבוע.','התנסו ברעיון חדש בקטן וראו מה לומדים ממנו.'],
+I:['קיימו שיחות אישיות עם הכפופים והקשיבו בלי להפריע.','השקיעו בגיבוש הצוות: פעילות משותפת, הכרה והערכה.']};
+const ONE={P:'מוביל את הצוות לתוצאות',A:'יוצר סדר ויציבות',E:'מחדש ורואה קדימה',I:'מלכד ודואג לאנשים'};
+function renderConcl(t,dom){
+  const D=CONCL[dom];
+  const li=a=>a.map(x=>'<li>'+x+'</li>').join('');
+  const gap=k=>TYPES[k].ranges[1][1]-t[k];
+  const low=KEYS.slice().sort((a,b)=>gap(b)-gap(a))[0];
+  $('concl').innerHTML=
+   '<div class="cs"><h2>המסקנות שלך</h2><div class="two">'+
+   '<div class="box good"><h4>שתי חוזקות</h4><ul>'+li(D.s)+'</ul></div>'+
+   '<div class="box bad"><h4>שתי חולשות</h4><ul>'+li(D.w)+'</ul></div></div></div>'+
+   '<div class="cs"><h2>איפה אפשר להשתפר?</h2><div class="bridge">'+
+   '<p><b>גישור על פערים בסגנון החולשות שלך:</b></p><ul>'+li(D.b)+'</ul>'+
+   '<p style="margin-top:12px"><b>הסגנון שבו יש לך הכי הרבה מקום לצמיחה: '+TYPES[low].name+'</b> ('+level(low,t[low])+')</p><ul>'+li(DEV[low])+'</ul></div></div>'+
+   '<div class="final"><h2>למפקד טוב יש קצת מהכול</h2>'+
+   '<p>אין סגנון אחד "נכון". מפקד טוב לא נשאר בסגנון אחד אלא מכיר את החוזקות שלו, מזהה את הפערים ומשלב בין כל ארבעת הסגנונות לפי מה שהמצב דורש: ביצוע כשצריך תוצאה, סדר כשצריך יציבות, יוזמה כשצריך שינוי, וליכוד כשצריך צוות.</p>'+
+   '<div class="fgrid">'+KEYS.map(k=>'<div class="fc" style="border-color:'+TYPES[k].color+'"><b style="color:'+TYPES[k].color+'">'+TYPES[k].name+'</b>'+ONE[k]+'</div>').join('')+'</div>'+
+   '<p style="margin-top:12px">הסגנון הבולט שלך הוא נקודת מוצא ולא הגדרה קבועה. מפקד שמפתח גם את שאר הסגנונות הופך לגמיש, מוביל ומשפיע יותר.</p></div>';
+}
+function spot(el,k,tag,cls){
+  const T=TYPES[k];el.className='spot '+cls;el.style.borderColor=T.color;
+  el.innerHTML='<span class="tag" style="background:'+T.color+'"></span><h3></h3><div class="eng"></div><ul></ul>';
+  el.querySelector('.tag').textContent=tag;
+  el.querySelector('h3').textContent=T.full+' ('+T.name+')';
+  el.querySelector('.eng').textContent=T.eng.toUpperCase();
+  T.desc.forEach(x=>{const li=document.createElement('li');li.textContent=x;el.querySelector('ul').appendChild(li)});
+}
+
+</script>
+</body>
+</html>
