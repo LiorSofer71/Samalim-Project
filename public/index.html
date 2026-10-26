@@ -77,7 +77,7 @@ a{color:var(--ac)}#atbl button{padding:4px 10px;font-size:.8rem;color:#b3261e}
 <section id="s-intro" class="card">
   <h1>שאלון אבחון סגנון ניהול</h1>
   <p>שאלון זה מיועד למשתתפי קורס מפקדים בכניסתם לקבע, ומטרתו לסייע לכם להכיר את סגנון הניהול הבולט שלכם. השאלון כולל 20 שאלות, ובכל שאלה 4 היגדים אפשריים.</p>
-  <p>עבור כל שאלה, דרגו את ההיגדים <b>מהמתאים ביותר לכם ועד הפחות מתאים</b> — פשוט לחצו עליהם לפי סדר ההתאמה. אין תשובות נכונות או שגויות, ענו בכנות ובאופן ספונטני.</p>
+  <p>עבור כל שאלה, דרגו את ההיגדים <b>מהמתאים ביותר לכם ועד הפחות מתאים</b> — פשוט לחצו עליהם לפי סדר ההתאמה, וליד כל היגד יופיע מספר הדירוג שלו (1 עד 4). אין תשובות נכונות או שגויות, ענו בכנות ובאופן ספונטני.</p>
   <div class="inner">
     <label for="name">שם מלא</label>
     <input id="name" autocomplete="name" placeholder="הקלד/י שם מלא">
@@ -91,7 +91,7 @@ a{color:var(--ac)}#atbl button{padding:4px 10px;font-size:.8rem;color:#b3261e}
   <div class="bar"><i id="pFill"></i></div>
   <div class="qnav" id="qnav"></div>
   <div class="stem" id="stem"></div>
-  <div class="hintq">לחצו על ההיגדים בסדר יורד: תחילה על ההיגד המתאים ביותר, ולבסוף על הפחות מתאים.</div>
+  <div class="hintq">לחצו על ההיגדים בסדר יורד: 1 = המתאים ביותר, 4 = הפחות מתאים. המספר יופיע ליד כל היגד שבחרתם.</div>
   <div id="opts"></div>
   <div class="row"><button id="prev">חזרה</button><button id="resetQ">איפוס שאלה</button><button class="pri" id="next" disabled>הבא</button></div>
 </section>
@@ -183,7 +183,7 @@ function renderQ(){
   KEYS.forEach((k,ki)=>{
     const rank=a[k];
     const b=document.createElement('button');b.className='opt'+(rank!==undefined?' on':'');
-    b.innerHTML='<span class="badge">'+(rank!==undefined?rank:'')+'</span><span></span>';
+    b.innerHTML='<span class="badge">'+(rank!==undefined?RANK_ORDER.indexOf(rank)+1:'')+'</span><span></span>';
     b.lastChild.textContent=Q[cur][ki+1];
     b.onclick=()=>{
       if(a[k]!==undefined)delete a[k];
